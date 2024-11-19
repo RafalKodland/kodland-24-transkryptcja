@@ -31,8 +31,9 @@
                     </label>
                 </div>
                 <label for="text">
-                    <textarea class="form__text" name="text" id="text" cols="30" rows="10" required placeholder="Napisz wpis..."></textarea>
+                    <textarea class="form__text" name="text" id="text" cols="30" rows="10" required placeholder="Napisz wpis...">{{text}}</textarea>
                 </label>
+                <a href="{{ url_for('voice') }}" class="form__button">Nagraj</a>
                 <button class="form__button">Stwórz</button>
             </div>
         </form>

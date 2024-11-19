@@ -1,3 +1,10 @@
 from speech import speech
 
-print(speech())
+try:
+    text = int(input("Wpisz liczbę:"))
+except:
+    text = "Nie da się przekonwertować wartości"
+
+print(text)
+
+

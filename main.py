@@ -2,6 +2,8 @@
 from flask import Flask, render_template,request, redirect
 #Podłączenie biblioteki bazy danych
 from flask_sqlalchemy import SQLAlchemy
+from speech import speech
+from speech_recognition.exceptions import UnknownValueError
 
 
 app = Flask(__name__)
@@ -50,6 +52,19 @@ def card(id):
 @app.route('/create')
 def create():
     return render_template('create_card.html')
+
+
+@app.route("/voice")
+def voice():
+    try:
+        text = speech()
+    except UnknownValueError:
+        text = "Nie udało się rozpoznać mowy..."
+    except:
+        text = "Coś poszło nie tak..."
+
+    return render_template('create_card.html', text=text)
+
 
 #Formularz karty
 @app.route('/form_create', methods=['GET','POST'])
